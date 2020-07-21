@@ -59,7 +59,7 @@ describe('dummy(blogs):', () => {
   })
 })
 
-describe('favoriteBlog(blogs)', () => {
+describe('favoriteBlog(blogs):', () => {
   test('of empty list is empty object', () => {
     const result = listHelper.favoriteBlog([])
     expect(result).toEqual({})
@@ -81,6 +81,23 @@ describe('favoriteBlog(blogs)', () => {
       author: 'Edsger W. Dijkstra',
       likes: 12
     })
+  })
+})
+
+describe('mostBlogs(blogs):', () => {
+  test('of empty list is undefined', () => {
+    const result = listHelper.mostBlogs([])
+    expect(result).toBeUndefined()
+  })
+
+  test('when list has only one blog equals that author', () => {
+    const result = listHelper.mostBlogs(listWithOneBlog)
+    expect(result).toEqual({ author: 'Edsger W. Dijkstra', blogs: 1 })
+  })
+
+  test('of a longer list is found correctly', () => {
+    const result = listHelper.mostBlogs(listWithMoreBlogs)
+    expect(result).toEqual({ author: 'Robert C. Martin', blogs: 3 })
   })
 })
 
