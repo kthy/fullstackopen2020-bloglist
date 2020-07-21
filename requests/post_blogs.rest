@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "A Blog Title",
-  "author": "A. Random Author",
-  "url": "https://www.blog.invalid/",
-  "likes": 42
+  "title": "Ai Weiwei",
+  "author": "艾未未",
+  "url": "https://www.aiweiwei.com/",
+  "likes": 1024
 }
