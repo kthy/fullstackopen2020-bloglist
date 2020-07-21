@@ -1,0 +1,9 @@
+PUT http://localhost:3003/api/blogs/5f169f02516422448057a141
+Content-Type: application/json
+
+{
+  "author": "艾未未",
+  "likes": 1024,
+  "title": "Moonmoonmoonmoon",
+  "url": "https://www.aiweiwei.com/"
+}

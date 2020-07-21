@@ -25,7 +25,12 @@ const app = express()
 const mongoUrl = config.MONGODB_URI
 logger.info('Connecting to', mongoUrl.replace(config.MONGODB_CRED, 'AzureDiamond:hunter2'))
 mongoose
-  .connect(mongoUrl, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoUrl, {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(_ => {
     logger.info('Connected to MongoDB')
   })
