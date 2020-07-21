@@ -1,2 +1,5 @@
-# fullstackopen2020-bloglist
-Full Stack Open 2020 - Bloglist App
+# Full Stack Open 2020 - Bloglist App
+
+Coursework for <https://fullstackopen.com/>.
+
+Backend running at <https://….herokuapp.com/>.
