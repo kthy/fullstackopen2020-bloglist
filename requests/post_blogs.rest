@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Ai Weiwei",
-  "author": "艾未未",
-  "url": "https://www.aiweiwei.com/",
-  "likes": 1024
+  "title": ".NET Core Code Coverage as a Global Tool with coverlet",
+  "author": "Scott Hanselman",
+  "url": "https://www.hanselman.com/blog/NETCoreCodeCoverageAsAGlobalToolWithCoverlet.aspx",
+  "likes": 1
 }

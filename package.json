@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "deploy": "git push heroku master",
-    "dev": "nodemon index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "lint": "eslint .",
-    "start": "node index.js",
-    "test": "jest --verbose"
+    "start": "cross-env NODE_ENV=production node index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
   },
   "repository": {
     "type": "git",
@@ -26,15 +26,18 @@
   },
   "homepage": "https://github.com/kthy/fullstackopen2020-bloglist#readme",
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0",
     "eslint": "^7.5.0",
     "jest": "^26.1.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "lodash": "^4.17.19",
     "mongoose": "^5.9.24",
     "mongoose-unique-validator": "^2.0.3",
