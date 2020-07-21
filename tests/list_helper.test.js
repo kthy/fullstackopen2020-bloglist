@@ -47,7 +47,7 @@ const listWithMoreBlogs = [
     title: 'Type wars',
     author: 'Robert C. Martin',
     url: 'http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html',
-    likes: 12, __v: 0
+    likes: 2, __v: 0
   }
 ]
 
@@ -101,6 +101,23 @@ describe('mostBlogs(blogs):', () => {
   })
 })
 
+describe('mostLikes(blogs):', () => {
+  test('of empty list is empty object', () => {
+    const result = listHelper.mostLikes([])
+    expect(result).toEqual({})
+  })
+
+  test('when list has only one blog equals that author', () => {
+    const result = listHelper.mostLikes(listWithOneBlog)
+    expect(result).toEqual({ author: 'Edsger W. Dijkstra', likes: 5 })
+  })
+
+  test('of a longer list is found correctly', () => {
+    const result = listHelper.mostLikes(listWithMoreBlogs)
+    expect(result).toEqual({ author: 'Edsger W. Dijkstra', likes: 17 })
+  })
+})
+
 describe('totalLikes(blogs):', () => {
   test('of empty list is zero', () => {
     const result = listHelper.totalLikes([])
@@ -114,6 +131,6 @@ describe('totalLikes(blogs):', () => {
 
   test('of a longer list is calculated right', () => {
     const result = listHelper.totalLikes(listWithMoreBlogs)
-    expect(result).toBe(46)
+    expect(result).toBe(36)
   })
 })

@@ -28,6 +28,28 @@ const mostBlogs = blogs => {
   return authors.pop()
 }
 
+const mostLikes = blogs => {
+  let authors = {}
+  blogs.forEach(blog => {
+    if (Object.keys(authors).includes(blog.author)) {
+      authors[blog.author] += blog.likes
+    } else {
+      authors[blog.author] = blog.likes
+    }
+  })
+
+  let mostLiked = { likes: -1 }
+  Object.keys(authors).forEach(author => {
+    if (authors[author] > mostLiked.likes) {
+      mostLiked = { author: author, likes: authors[author] }
+    }
+  })
+
+  return mostLiked.likes === -1
+    ? {}
+    : mostLiked
+}
+
 const totalLikes = blogs => {
   const likeCounter = (sum, item) => sum + item.likes
 
@@ -40,5 +62,6 @@ module.exports = {
   dummy,
   favoriteBlog,
   mostBlogs,
+  mostLikes,
   totalLikes,
 }
