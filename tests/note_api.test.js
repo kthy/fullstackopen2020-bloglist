@@ -76,6 +76,20 @@ test('a blog doc cannot have negative likes', async () => {
   expect(response.body.error).toBeDefined()
 })
 
+test('a blog doc must have a title', async () => {
+  const response = await api
+    .post('/api/blogs')
+    .send({ author: 'Bar', url: 'http://example.com/' })
+  expect(response.body.error).toBeDefined()
+})
+
+test('a blog doc must have a url', async () => {
+  const response = await api
+    .post('/api/blogs')
+    .send({ title: 'Foo', author: 'Bar' })
+  expect(response.body.error).toBeDefined()
+})
+
 afterAll(() => {
   mongoose.connection.close()
 })
