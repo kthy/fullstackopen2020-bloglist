@@ -1,0 +1,41 @@
+{
+  "name": "bloglist-app",
+  "version": "0.0.1",
+  "description": "Coursework for https://fullstackopen.com/.",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "git push heroku master",
+    "dev": "nodemon index.js",
+    "lint": "eslint .",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kthy/fullstackopen2020-bloglist.git"
+  },
+  "keywords": [
+    "mooc",
+    "coursework",
+    "nodejs",
+    "express"
+  ],
+  "author": "Kristian Thy <thy@42.dk>",
+  "bugs": {
+    "url": "https://github.com/kthy/fullstackopen2020-bloglist/issues"
+  },
+  "homepage": "https://github.com/kthy/fullstackopen2020-bloglist#readme",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0",
+    "eslint": "^7.5.0",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.24",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.10.0"
+  }
+}
