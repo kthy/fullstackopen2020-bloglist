@@ -52,6 +52,30 @@ test('a blog doc can be created', async () => {
   expect(authors).toContain('Scott Hanselman')
 })
 
+test('a blog doc created without likes has likes=0', async () => {
+  const response = await api
+    .post('/api/blogs')
+    .send({
+      title: 'The Majestic Monolith can become The Citadel',
+      author: 'David Heinemeier Hansson',
+      url: 'https://m.signalvnoise.com/the-majestic-monolith-can-become-the-citadel/'
+    })
+  expect(response.body.likes).toBeDefined()
+  expect(response.body.likes).toBe(0)
+})
+
+test('a blog doc cannot have negative likes', async () => {
+  const response = await api
+    .post('/api/blogs')
+    .send({
+      title: 'Foo',
+      author: 'Bar',
+      url: 'http://example.com/',
+      likes: -42
+    })
+  expect(response.body.error).toBeDefined()
+})
+
 afterAll(() => {
   mongoose.connection.close()
 })
