@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imt0aHkiLCJpZCI6IjVmMTdmZWY3NTRjNDZmNjg2YzkxN2I0NiIsImlhdCI6MTU5NTQxMjE0OH0.a6dx5b7-IhPpb1jbwweqCWNnbkF1ekvUwzO6g8-mWeA
 
 {
   "title": ".NET Core Code Coverage as a Global Tool with coverlet",
   "author": "Scott Hanselman",
   "url": "https://www.hanselman.com/blog/NETCoreCodeCoverageAsAGlobalToolWithCoverlet.aspx",
-  "likes": 1,
-  "user": "5f17fef754c46f686c917b46"
+  "likes": 1
 }
