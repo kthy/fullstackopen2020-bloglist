@@ -15,6 +15,9 @@ blogsRouter.post('/', async (request, response) => {
     return response.status(401).json({ error: 'missing or invalid token' })
   }
   const user = await User.findById(request.token.id)
+  if (!user) {
+    return response.status(400).json({ error: 'unknown user' })
+  }
   const blog = new Blog({ ...body, user: user._id })
   const result = await blog.save()
   user.blogs = user.blogs.concat(result._id)
