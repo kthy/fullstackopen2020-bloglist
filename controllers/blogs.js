@@ -23,8 +23,20 @@ blogsRouter.post('/', async (request, response) => {
 })
 
 blogsRouter.delete('/:id', async (request, response) => {
-  await Blog.findByIdAndRemove(request.params.id)
-  response.status(204).end()
+  if (!request.token) {
+    return response.status(401).json({ error: 'missing or invalid token' })
+  }
+  const blog = await Blog.findById(request.params.id)
+  if (!blog) {
+    return response.status(404).end()
+  }
+  const user = await User.findById(request.token.id)
+  if (user._id.toString() === blog.user.toString()) {
+    await Blog.findByIdAndRemove(request.params.id)
+    response.status(204).end()
+  } else {
+    return response.status(401).json({ error: 'you cannot delete other people\'s blog entries' })
+  }
 })
 
 blogsRouter.put('/:id', async (request, response) => {
