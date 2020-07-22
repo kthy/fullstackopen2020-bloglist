@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 
 const blogsRouter = require('./controllers/blogs')
+const usersRouter = require('./controllers/users')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
 const middleware = require('./utils/middleware')
@@ -21,6 +22,7 @@ const app = express()
   .use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
   .use(middleware.requestLogger)
   .use('/api/blogs', blogsRouter)
+  .use('/api/users', usersRouter)
 
 const mongoUrl = config.MONGODB_URI
 logger.info('Connecting to', mongoUrl.replace(config.MONGODB_CRED, 'AzureDiamond:hunter2'))
