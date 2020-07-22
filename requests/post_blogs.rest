@@ -5,5 +5,6 @@ Content-Type: application/json
   "title": ".NET Core Code Coverage as a Global Tool with coverlet",
   "author": "Scott Hanselman",
   "url": "https://www.hanselman.com/blog/NETCoreCodeCoverageAsAGlobalToolWithCoverlet.aspx",
-  "likes": 1
+  "likes": 1,
+  "user": "5f17fef754c46f686c917b46"
 }

@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
   username: { type: String, required: true, unique: true, minlength: 3 },
   password: { type: String, required: true, validate: /^\$2[ab]\$.+/ },
   name: { type: String, default: 'Anonymous Coward' },
+  blogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }]
 })
 
 userSchema.plugin(uniqueValidator)

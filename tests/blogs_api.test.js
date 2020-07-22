@@ -81,6 +81,7 @@ test('a blog doc must have a title', async () => {
     .post('/api/blogs')
     .send({ author: 'Bar', url: 'http://example.com/' })
   expect(response.body.error).toBeDefined()
+  expect(response.body.error).toContain('`title` is required')
 })
 
 test('a blog doc must have a url', async () => {
@@ -88,6 +89,7 @@ test('a blog doc must have a url', async () => {
     .post('/api/blogs')
     .send({ title: 'Foo', author: 'Bar' })
   expect(response.body.error).toBeDefined()
+  expect(response.body.error).toContain('`url` is required')
 })
 
 afterAll(() => {
