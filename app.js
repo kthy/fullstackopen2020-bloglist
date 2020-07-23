@@ -10,6 +10,7 @@ const usersRouter = require('./controllers/users')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
 const middleware = require('./utils/middleware')
+const util = require('./utils/swiss_knife')
 
 morgan.token('body', request => {
   const body = JSON.stringify(request.body)
@@ -26,6 +27,11 @@ const app = express()
   .use('/api/blogs', blogsRouter)
   .use('/api/login', loginRouter)
   .use('/api/users', usersRouter)
+
+if (util.environmentIsTest) {
+  const testingRouter = require('./controllers/testing')
+  app.use('/api/testing', testingRouter)
+}
 
 const mongoUrl = config.MONGODB_URI
 logger.info('Connecting to', mongoUrl.replace(config.MONGODB_CRED, 'AzureDiamond:hunter2'))

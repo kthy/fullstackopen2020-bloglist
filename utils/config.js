@@ -1,8 +1,9 @@
-if (process.env.NODE_ENV !== 'production') require('dotenv-expand')(require('dotenv').config())
+const util = require('./swiss_knife')
+if (!util.environmentIsProd) require('dotenv-expand')(require('dotenv').config())
 
 const MONGODB_PWD = process.env.MONGODB_PWD
 let MONGODB_URI = process.env.MONGODB_URI
-if (process.env.NODE_ENV === 'test') {
+if (util.environmentIsTest) {
   MONGODB_URI = process.env.TEST_MONGODB_URI
 }
 

@@ -1,5 +1,7 @@
+const util = require('./swiss_knife')
+
 const info = (...params) => {
-  if (process.env.NODE_ENV !== 'test') {
+  if (!util.environmentIsTest) {
     console.log(...params)
   }
 }
