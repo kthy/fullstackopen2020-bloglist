@@ -19,9 +19,17 @@ blogsRouter.post('/', async (request, response) => {
     return response.status(400).json({ error: 'unknown user' })
   }
   const blog = new Blog({ ...body, user: user._id })
-  const result = await blog.save()
+  let result = await blog.save()
   user.blogs = user.blogs.concat(result._id)
   await user.save()
+  result = {
+    id: result._id,
+    author: result.author,
+    likes: result.likes,
+    title: result.title,
+    url: result.url,
+    user: user
+  }
   response.status(201).json(result)
 })
 
@@ -50,11 +58,13 @@ blogsRouter.put('/:id', async (request, response) => {
     url: body.url,
     likes: body.likes
   }
-  const updatedBlog = await Blog.findByIdAndUpdate(
-    request.params.id,
-    blog,
-    { new: true, runValidators: true, context: 'query' }
-  )
+  const updatedBlog = await Blog
+    .findByIdAndUpdate(
+      request.params.id,
+      blog,
+      { new: true, runValidators: true, context: 'query' }
+    )
+    .populate('user', 'name username')
   if (updatedBlog) {
     response.json(updatedBlog)
   } else {
